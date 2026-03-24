@@ -23,9 +23,7 @@ import Home from "./pages/Home"
 import Leaderboard from "./pages/Leaderboard"
 import Learn from "./pages/Learn"
 import NotFound from "./pages/NotFound"
-import Profile from "./pages/Profile"
-import ScholarshipApply from "./pages/ScholarshipApply"
-import Treasury from "./pages/Treasury"
+import LessonView from "./pages/LessonView"
 
 const CourseCatalog = () => (
 	<div style={{ padding: "24px" }}>
@@ -78,6 +76,7 @@ function App() {
 =======
 				<Route path="/" element={<ErrorBoundary><Home /></ErrorBoundary>} />
 				<Route path="/courses" element={<ErrorBoundary><Courses /></ErrorBoundary>} />
+				<Route path="/courses/:courseId/lessons/:lessonId" element={<ErrorBoundary><LessonView /></ErrorBoundary>} />
 				<Route path="/learn" element={<ErrorBoundary><Learn /></ErrorBoundary>} />
 				<Route path="/dao" element={<ErrorBoundary><Dao /></ErrorBoundary>} />
 				<Route path="/dao/proposals" element={<ErrorBoundary><DaoProposals /></ErrorBoundary>} />
