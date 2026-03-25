@@ -22,13 +22,11 @@ const Profile: React.FC = () => {
 	}, [])
 
 	const user = {
-		name: "Samuel Adekolu (Samixx Yasuke)",
 		lrnBalance: "100,000",
-		address:
-			"GB765432109876543210987654321098765432109876543210987654321098765",
+		name: walletAddress ? shortenAddress(walletAddress) : "Learner",
+		address: walletAddress ?? "",
 		nfts: [
 			{
-				id: "1",
 				program: "Soroban 101",
 				date: "2024-02-15",
 				artwork: "https://api.placeholder.com/150/150?text=S101",
@@ -76,35 +74,23 @@ const Profile: React.FC = () => {
 						AR
 					</div>
 				</div>
-				<div className="flex-1 text-center md:text-left"></div>
-				<h1 className="text-4xl font-black mb-3 tracking-tighter">
-					{t("pages.profile.title")}
-				</h1>
-				<code className="text-white/30 text-sm block mb-6 font-mono tracking-widest">
-					{walletAddress ? shortenAddress(walletAddress) : t("wallet.connect")}
-				</code>
-				<div className="flex flex-wrap justify-center md:justify-start gap-4">
-					{walletAddress ? (
-						<ReputationBadge size="md" showBalance />
-					) : (
-						<div className="px-5 py-2 glass rounded-full border border-white/10 text-xs font-black uppercase tracking-widest text-white/40">
-							{t("wallet.connect")}
-						</div>
-					)}
-					<p className="text-lg font-bold mb-2">{user.name}</p>
-					<code className="text-white/70 text-sm block mb-6 font-mono tracking-widest">
-						{user.address}
+				<div className="flex-1 text-center md:text-left">
+					<h1 className="text-4xl font-black mb-3 tracking-tighter">
+						{t("pages.profile.title")}
+					</h1>
+					<code className="text-white/30 text-sm block mb-6 font-mono tracking-widest">
+						{walletAddress
+							? shortenAddress(walletAddress)
+							: t("wallet.connect")}
 					</code>
 					<div className="flex flex-wrap justify-center md:justify-start gap-4">
-						<div className="px-5 py-2 glass rounded-full border border-brand-cyan/30 flex items-center gap-2">
-							<span className="w-2 h-2 bg-brand-cyan rounded-full animate-pulse" />
-							<span className="text-xs font-black uppercase tracking-widest text-brand-cyan">
-								{user.lrnBalance}
-							</span>
-						</div>
-						<div className="px-5 py-2 glass rounded-full border border-white/10 text-xs font-black uppercase tracking-widest text-white/80">
-							Elite Scholar Tier
-						</div>
+						{walletAddress ? (
+							<ReputationBadge size="md" showBalance />
+						) : (
+							<div className="px-5 py-2 glass rounded-full border border-white/10 text-xs font-black uppercase tracking-widest text-white/40">
+								{t("wallet.connect")}
+							</div>
+						)}
 					</div>
 				</div>
 			</header>
